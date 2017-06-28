@@ -5,7 +5,10 @@
  */
 package tfpra;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import static tfpra.ManipuladorArquivo.leAutores;
+import static tfpra.ManipuladorArquivo.leitor;
+//import static tfpra.Main.memoria;
 
 /**
  *
@@ -18,12 +21,12 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         
         //Memoria:
-        
-        
+        //leAutores(memoria);
+        leitor(memoria);
         
         
         TelaInicial telaInicial;

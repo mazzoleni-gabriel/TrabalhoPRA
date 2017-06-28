@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author mpgab
  */
-public class TelaAddLivro extends javax.swing.JFrame {
+public class TelaAddAutorDoLivro extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaAddAutor
+     * Creates new form TelaAddAutorDoLivro
      */
-    public TelaAddLivro() {
+    public TelaAddAutorDoLivro() {
         initComponents();
     }
 
@@ -30,20 +30,18 @@ public class TelaAddLivro extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        lblNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        lblEdit = new javax.swing.JTextField();
+        lblNome = new javax.swing.JTextField();
+        lblAutor = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        lblEdic = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        lblAno = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(500, 255));
 
-        jLabel1.setText("Nome:");
+        jLabel1.setText("Nome do livro:");
+
+        jLabel2.setText("Id do autor:");
 
         lblNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,11 +49,9 @@ public class TelaAddLivro extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Editora:");
-
-        lblEdit.addActionListener(new java.awt.event.ActionListener() {
+        lblAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblEditActionPerformed(evt);
+                lblAutorActionPerformed(evt);
             }
         });
 
@@ -67,11 +63,7 @@ public class TelaAddLivro extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Adicionar Livro");
-
-        jLabel4.setText("Edição:");
-
-        jLabel5.setText("Ano:");
+        jLabel3.setText("Adicionar Autor do Livro");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,76 +71,65 @@ public class TelaAddLivro extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNome, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblEdit)
-                    .addComponent(lblEdic)
-                    .addComponent(lblAno)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(0, 22, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(btnAdd)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNome)
+                    .addComponent(lblAutor)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblEdic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
+                .addComponent(lblAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnAdd)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-        int op = Main.memoria.addLivro(lblNome.getText(), lblEdit.getText(), Integer.parseInt(lblEdic.getText()), Integer.parseInt(lblAno.getText()),0);
-        
-        if(op == 0){
-            JOptionPane.showMessageDialog(null,"Livro adicionado com sucesso!");
-        }
-        if(op == 1){
-            JOptionPane.showMessageDialog(null,"ERRO!\nAutor não encontrado");
-        }
-        if(op == 2){
-            JOptionPane.showMessageDialog(null,"ERRO!\nEdição do livro já cadastrada!");
-        }
-    }//GEN-LAST:event_btnAddActionPerformed
-
     private void lblNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lblNomeActionPerformed
 
-    private void lblEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblEditActionPerformed
+    private void lblAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblAutorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblEditActionPerformed
+    }//GEN-LAST:event_lblAutorActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        
+        int op = Main.memoria.addAutorDoLivro(lblNome.getText(), Integer.parseInt(lblAutor.getText()));
+        if(op == 0){
+            JOptionPane.showMessageDialog(null,"Autor do livro cadastrado com sucesso!");
+        }
+        
+        if(op == 1){
+            JOptionPane.showMessageDialog(null,"ERRO!\nAutor não encontrado");
+        }
+        
+        if(op == 2){
+            JOptionPane.showMessageDialog(null,"ERRO!\nLivro não encontrado");
+        }
+        
+            
+        
+        
+        
+    }//GEN-LAST:event_btnAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,23 +148,20 @@ public class TelaAddLivro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAddLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAddAutorDoLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAddLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAddAutorDoLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAddLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAddAutorDoLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAddLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAddAutorDoLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAddLivro().setVisible(true);
+                new TelaAddAutorDoLivro().setVisible(true);
             }
         });
     }
@@ -193,11 +171,7 @@ public class TelaAddLivro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField lblAno;
-    private javax.swing.JTextField lblEdic;
-    private javax.swing.JTextField lblEdit;
+    private javax.swing.JTextField lblAutor;
     private javax.swing.JTextField lblNome;
     // End of variables declaration//GEN-END:variables
 }

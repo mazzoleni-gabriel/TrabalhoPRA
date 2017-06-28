@@ -23,6 +23,14 @@ public class Leitor {
         cont++;
     }
     
+    Leitor(int id,String nome, int cpf, String email){
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.id = id;
+        cont=id+1;
+    }
+    
     public int getId() {
         return id;
     }

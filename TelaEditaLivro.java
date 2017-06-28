@@ -46,9 +46,6 @@ public class TelaEditaLivro extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         lblNome2 = new javax.swing.JTextField();
         btnNome2 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        lblAutor = new javax.swing.JTextField();
-        btnAutor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(500, 255));
@@ -126,21 +123,6 @@ public class TelaEditaLivro extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Novo Autor(ID):");
-
-        lblAutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblAutorActionPerformed(evt);
-            }
-        });
-
-        btnAutor.setText("Editar Autor");
-        btnAutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAutorActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,12 +134,6 @@ public class TelaEditaLivro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(lblAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addComponent(btnAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -224,13 +200,7 @@ public class TelaEditaLivro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNome2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAutor))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -303,24 +273,6 @@ public class TelaEditaLivro extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnNome2ActionPerformed
 
-    private void lblAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblAutorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lblAutorActionPerformed
-
-    private void btnAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutorActionPerformed
-        // TODO add your handling code here:
-        int op = Main.memoria.editaLivroAutor(lblNome.getText(), Integer.parseInt(lblEdic.getText()), Integer.parseInt(lblAutor.getText()));
-        if( op == 0){
-            JOptionPane.showMessageDialog(null,"Autor editado com sucesso!");
-        }
-        if( op == 1){
-            JOptionPane.showMessageDialog(null,"ERRO!\nNovo autor não existente");
-        }
-        if( op == 2){
-            JOptionPane.showMessageDialog(null,"ERRO!\nEdição do livro não encontrada");
-        }
-    }//GEN-LAST:event_btnAutorActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -361,7 +313,6 @@ public class TelaEditaLivro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAno;
-    private javax.swing.JButton btnAutor;
     private javax.swing.JButton btnEdic;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNome2;
@@ -372,9 +323,7 @@ public class TelaEditaLivro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField lblAno;
-    private javax.swing.JTextField lblAutor;
     private javax.swing.JTextField lblEdic;
     private javax.swing.JTextField lblEdic2;
     private javax.swing.JTextField lblEdit;

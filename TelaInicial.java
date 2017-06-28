@@ -8,6 +8,7 @@ package tfpra;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static tfpra.ManipuladorArquivo.escritorBinario;
 
 /**
  *
@@ -19,6 +20,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private static final int AUTOR = 0;
     private static final int LEITOR = 1;
     private static final int LIVRO = 2;
+    private static final int AUTORDOLIVRO = 3;
     
     /**
      * Creates new form TelaInicial
@@ -40,6 +42,7 @@ public class TelaInicial extends javax.swing.JFrame {
         btnEXL = new javax.swing.JButton();
         btnADD = new javax.swing.JButton();
         cmb = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu inicial");
@@ -79,10 +82,17 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
-        cmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Autor", "Leitor", "Livro" }));
+        cmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Autor", "Leitor", "Livro", "Autor do livro" }));
         cmb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Printar tabelas");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -91,16 +101,22 @@ public class TelaInicial extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnADD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEXL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEDIT, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cmb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(cmb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnADD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEXL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEDIT, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 33, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +129,9 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addComponent(btnEXL)
                 .addGap(36, 36, 36)
                 .addComponent(btnEDIT)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,7 +154,11 @@ public class TelaInicial extends javax.swing.JFrame {
             TelaExlLivro telaExlLivro = new TelaExlLivro();
             telaExlLivro.setVisible(true);
         }
-           
+          
+        if(cmb.getSelectedIndex() == AUTORDOLIVRO){
+            TelaExcluiAutorDoLivro telaExcluiAutorDoLivro = new TelaExcluiAutorDoLivro();
+            telaExcluiAutorDoLivro.setVisible(true);
+        }
         
 
     }//GEN-LAST:event_btnEXLActionPerformed
@@ -158,6 +180,7 @@ public class TelaInicial extends javax.swing.JFrame {
             TelaEditaLivro telaEditaLivro = new TelaEditaLivro();
             telaEditaLivro.setVisible(true);
         }
+        
 
     }//GEN-LAST:event_btnEDITActionPerformed
 
@@ -179,12 +202,23 @@ public class TelaInicial extends javax.swing.JFrame {
             TelaAddLivro telaAddLivro = new TelaAddLivro();
             telaAddLivro.setVisible(true);
         }
+        
+        if(cmb.getSelectedIndex() == AUTORDOLIVRO){
+            TelaAddAutorDoLivro telaAddAutorDoLivro = new TelaAddAutorDoLivro();
+            telaAddAutorDoLivro.setVisible(true);
+        }
             
 
     }//GEN-LAST:event_btnADDActionPerformed
 
     private void cmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbActionPerformed
-        // TODO add your handling code here:
+        
+        if(cmb.getSelectedIndex() == AUTORDOLIVRO){
+            btnEDIT.setEnabled(false);
+        }else{
+            btnEDIT.setEnabled(true);
+        }
+        
     }//GEN-LAST:event_cmbActionPerformed
 
     private void formMouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_formMouseWheelMoved
@@ -205,7 +239,19 @@ public class TelaInicial extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        escritorBinario(Main.memoria);
+        
+        
     }//GEN-LAST:event_formWindowClosing
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Main.memoria.printaAutores();
+        Main.memoria.printaLeitores();
+        Main.memoria.printaLivros();
+        Main.memoria.printaAutoresDosLivros();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,5 +293,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton btnEDIT;
     private javax.swing.JButton btnEXL;
     private javax.swing.JComboBox<String> cmb;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

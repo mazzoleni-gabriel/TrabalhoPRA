@@ -16,13 +16,19 @@ public class Autor {
     String nome;
     String nacionalidade;
     int id;
-    static int cont=1;
+    static int cont=0;
 
     Autor(String nome, String nac){
         this.nome = nome;
         this.nacionalidade = nac;
         this.id = cont;
         cont++;
+    }
+    Autor(int id,String nome, String nac){
+        this.id = id;
+        this.nome = nome;
+        this.nacionalidade = nac;
+        cont = id+1;
     }
     
     public String getNome() {
@@ -49,7 +55,11 @@ public class Autor {
         this.id = id;
     }
 
-    public static int getCont() {
+    public int getCont() {
+        return cont;
+    }
+    
+    public static int getContS() {
         return cont;
     }
 

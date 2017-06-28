@@ -16,7 +16,6 @@ public class Livro {
     String editora;
     int edicao;
     int ano;
-    int idautor;
     
     
     Livro(String nome, String editora, int edicao, int ano, int idautor){
@@ -24,9 +23,17 @@ public class Livro {
         this.editora = editora;
         this.edicao = edicao;
         this.ano = ano;
-        this.idautor = idautor;
         this.id = cont;
         cont++;
+    }
+    
+    Livro(int id, String nome, String editora, int edicao, int ano, int idautor){
+        this.nome = nome;
+        this.editora = editora;
+        this.edicao = edicao;
+        this.ano = ano;
+        this.id = id;
+        cont = id+1;
     }
 
     public int getId() {
@@ -76,15 +83,6 @@ public class Livro {
     public void setAno(int ano) {
         this.ano = ano;
     }
-
-    public int getIdautor() {
-        return idautor;
-    }
-
-    public void setIdautor(int idautor) {
-        this.idautor = idautor;
-    }
-    
-    
+ 
     
 }

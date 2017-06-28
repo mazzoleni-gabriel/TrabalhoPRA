@@ -19,6 +19,7 @@ public class Memoria {
     public static ArrayList<Autor> autores = new  ArrayList();
     public static ArrayList<Leitor> leitores = new ArrayList();
     public static ArrayList<Livro> livros = new ArrayList();
+    public static ArrayList<AutorDoLivro> autoresdoslivros = new ArrayList();
 
     //Métodos de autores
     public ArrayList<Autor> getAutores() {
@@ -196,7 +197,7 @@ public class Memoria {
         System.out.println("Livros: \n");
         for(i=0; i < livros.size(); i++){
             System.out.println(livros.get(i).getId() + " " + livros.get(i).getNome() + " " + livros.get(i).getEditora()
-            + " " + livros.get(i).getEdicao() + " " + livros.get(i).getAno() + " " + livros.get(i).getIdautor() + "\n");
+            + " " + livros.get(i).getEdicao() + " " + livros.get(i).getAno() + "\n");
         }
     }
     
@@ -207,19 +208,7 @@ public class Memoria {
                 return 2; //Livro já cadastrado
             }
         }
-        
-        for(i=0 ; i<autores.size() ; i++){
-            if(idautor == autores.get(i).getId()){
-                autor = 1; //encontrou autor
-            }
-            
-        }
-        
-        if(autor == 0){
-            return 1; // autor não encontrado 
-        }
-        
-
+               
         Livro livro = new Livro(nome,editora,edicao,ano,idautor);
         livros.add(livro);
         return 0; //ok
@@ -298,25 +287,100 @@ public class Memoria {
         }
     }
     
-    public int editaLivroAutor(String nome, int edicao, int idautor){
-        int i, autor=-1;
+    
+    public int addAutorDoLivro(String nomeLivro, int idAutor){
+        int i, autor = 0, add=0;
         for(i=0;i<autores.size();i++){
-            if(autores.get(i).getId() == idautor)
-                autor = i;
-        }
-        
-        if(autor == -1)
-            return 1; //autor nao existente
-        
-         for(i=0 ; i<livros.size() ; i++){
-            if(nome.equals(livros.get(i).getNome()) && (edicao == livros.get(i).getEdicao())){
-                livros.get(i).setIdautor(idautor);
-                return 0;
+            if(idAutor == autores.get(i).getId()){
+                autor = 1;
             }
         }
-        return 2; //livro nao existente
+        
+        if(autor == 0){
+            return 1; //Autor n encontrado
+        }
+        
+        AutorDoLivro autordolivro = new AutorDoLivro(-1,-1);
+        for(i=0;i<livros.size();i++){
+            if(nomeLivro.equals(livros.get(i).getNome())){
+                autordolivro.setIdautor(idAutor);
+                autordolivro.setIdlivro(livros.get(i).getId());
+                autoresdoslivros.add(autordolivro);
+                add = 1;
+            }
+        }
+        
+        if(add != 0)
+            return 0; // OK
+        return 2; // não encontrou o livro
     }
     
+    public int editaAutorDoLivro(String nomeLivro, int idAutor){
+        int i, autor = 0, edit=0;
+        for(i=0;i<autores.size();i++){
+            if(idAutor == autores.get(i).getId()){
+                autor = 1;
+            }
+        }
+        
+        if(autor == 0){
+            return 1; //Autor n encontrado
+        }
+        
+        AutorDoLivro autordolivro = new AutorDoLivro(-1,-1);
+        for(i=0;i<livros.size();i++){
+            if(nomeLivro.equals(livros.get(i).getNome())){
+                autoresdoslivros.get(i).setIdautor(idAutor);
+                edit = 1;
+            }
+        }
+        
+        if(edit != 0)
+            return 0; // OK
+        return 2; // não encontrou o livro
+    }
+    
+    public int excluiAutorDoLivro(String nomeLivro, int idAutor){
+        int i, autor = 0, edit=0;
+        for(i=0;i<autores.size();i++){
+            if(idAutor == autores.get(i).getId()){
+                autor = 1;
+            }
+        }
+        
+        if(autor == 0){
+            return 1; //Autor n encontrado
+        }
+        
+        AutorDoLivro autordolivro = new AutorDoLivro(-1,-1);
+        for(i=0;i<livros.size();i++){
+            if(nomeLivro.equals(livros.get(i).getNome())){
+                autoresdoslivros.remove(i);
+                edit = 1;
+            }
+        }
+        
+        if(edit != 0)
+            return 0; // OK
+        return 2; //Não encontrou o livro
+    }
+    
+    public void printaAutoresDosLivros(){
+        int i;
+        System.out.println("Autores dos livros:"+  "\n");
+        for(i=0; i < autoresdoslivros.size(); i++){
+            System.out.println(autoresdoslivros.get(i).getIdlivro() + " " + autoresdoslivros.get(i).getIdautor() + "\n");
+        }
+    }
+
+    public ArrayList<AutorDoLivro> getAutoresdoslivros() {
+        return autoresdoslivros;
+    }
+
+    public void setAutoreslivros(ArrayList<AutorDoLivro> autoresdoslivros) {
+        Memoria.autoresdoslivros = autoresdoslivros;
+    }
+ 
     
     
 }
